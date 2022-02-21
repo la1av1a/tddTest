@@ -36,5 +36,12 @@ public class PasswordStrengthMeterTest {
     @Test
     void nullInput_Then_Invalid(){
         assertStrength(null,PasswordStrength.INVALID);
+        assertStrength("",PasswordStrength.INVALID);
+    }
+
+    @Test
+    //@Displayname("대문자를 포함하지 않고 나머지 조건을 충족하는 경우)
+    void meetsOtherCriteria_except_for_UpperCase_Then_Normal(){
+        assertStrength("ab12!@df",PasswordStrength.NORMAL);
     }
 }
